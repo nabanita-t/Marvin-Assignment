@@ -8,7 +8,10 @@ import wikipedia
 
 
 class GetWikiWordFrequencyAPIView(generics.GenericAPIView):
-    """Get wikipedia word frequency API View"""
+    """Get wikipedia word frequency API View -- It takes two parameters from users in the param i.e topic and
+    n = number of top word frequency, and renders the output of top n frequently used words in that
+    wikipedia search result with number of occurrences. This APi also stores the search history
+    in a model named Search History"""
 
     parser_classes = (parsers.JSONParser,)
     filter_backends = (
@@ -58,7 +61,8 @@ class GetWikiWordFrequencyAPIView(generics.GenericAPIView):
 
 
 class GetSearchHistoryAPIView(generics.GenericAPIView):
-    """Get wikipedia search history API View"""
+    """Get wikipedia search history API View . It renders all the search history stored in the Database from
+    the Wikipedia Search API success response. The default ordering in this API is with respect to latest timestamp """
 
     parser_classes = (parsers.JSONParser,)
     filter_backends = (
